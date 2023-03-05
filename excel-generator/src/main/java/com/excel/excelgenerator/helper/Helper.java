@@ -42,12 +42,13 @@ public class Helper {
 			for (Category c : list) {
 
 				Row dataRow = sheet.createRow(rowIndex);
+				rowIndex += 1;
 
 				dataRow.createCell(0).setCellValue(c.getCategoryId());
 				dataRow.createCell(1).setCellValue(c.getTitle());
 				dataRow.createCell(2).setCellValue(c.getDescription());
 				dataRow.createCell(3).setCellValue(c.getCoverImage());
-				rowIndex += 1;
+				
 			}
 
 			workbook.write(out);
@@ -59,10 +60,7 @@ public class Helper {
 			return null;
 		} finally {
 			workbook.close();
-			out.close();
-			
+			out.close();	
 		}
-
-		
 	}
 }

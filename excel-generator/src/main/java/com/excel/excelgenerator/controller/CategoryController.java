@@ -41,18 +41,19 @@ public class CategoryController {
 		return ResponseEntity.ok(allCategories);
 	}
 	
-	@RequestMapping("/downlaod")
+	@RequestMapping("/excel")
 	public ResponseEntity<Resource> download() throws IOException{
-		String fileName = "categories.xlsx";
+		System.out.println("Control reach into api");
+		String filename = "categories.xlsx";
 		
 		ByteArrayInputStream actualData = this.categoryService.getActualData();
 		InputStreamResource file = new InputStreamResource(actualData);
 		
 		ResponseEntity<Resource> body = ResponseEntity.ok()
-				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
-				.contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
+				.contentType((MediaType) MediaType.parseMediaTypes("application/vnd.ms-excel"))
 				.body(file);
-		
+		System.out.println("End of an api");
 		return body;
 	}
 	
