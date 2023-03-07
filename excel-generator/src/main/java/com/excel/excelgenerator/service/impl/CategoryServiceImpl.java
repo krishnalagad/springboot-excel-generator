@@ -41,10 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public ByteArrayInputStream getActualData() throws IOException {
-		System.out.println("inside service impl");
-		List<Category> list = this.categoryRepository.findAll();
-		ByteArrayInputStream dataToExcel = Helper.dataToExcel(list);
-		System.out.println("end of service impl");
+		ByteArrayInputStream dataToExcel = Helper.dataToExcel(getAllCategories());
 		return dataToExcel;
 	}
 

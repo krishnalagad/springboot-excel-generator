@@ -43,7 +43,6 @@ public class CategoryController {
 	
 	@RequestMapping("/excel")
 	public ResponseEntity<Resource> download() throws IOException{
-		System.out.println("Control reach into api");
 		String filename = "categories.xlsx";
 		
 		ByteArrayInputStream actualData = this.categoryService.getActualData();
@@ -53,7 +52,6 @@ public class CategoryController {
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
 				.contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
 				.body(file);
-		System.out.println("End of an api");
 		return body;
 	}
 	
