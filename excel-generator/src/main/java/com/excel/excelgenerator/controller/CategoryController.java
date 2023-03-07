@@ -51,7 +51,7 @@ public class CategoryController {
 		
 		ResponseEntity<Resource> body = ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + filename)
-				.contentType((MediaType) MediaType.parseMediaTypes("application/vnd.ms-excel"))
+				.contentType(MediaType.parseMediaType("application/vnd.ms-excel"))
 				.body(file);
 		System.out.println("End of an api");
 		return body;
